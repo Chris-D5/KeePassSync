@@ -1,0 +1,15 @@
+bin/
+obj/
+
+*.user
+*.suo
+
+.nvim/
+*.swp
+*.swo
+
+.DS_Store
+Thumbs.db
+
+TestResults/
+*.log
