@@ -1,19 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RootNamespace>KeePassSync</RootNamespace>
+    <AssemblyName>KeePassSync</AssemblyName>
   </PropertyGroup>
-  
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="KeePass">
       <HintPath>C:\Program Files\KeePass Password Safe 2\KeePass.exe</HintPath>
     </Reference>
-
-    <Reference Include="KeePassLib">
-      <HintPath>C:\Program Files\KeePass Password Safe 2\KeePassLibC64.dll</HintPath>
-    </Reference>
-  </ItemGroup>i
+      
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
 </Project>
