@@ -62,7 +62,7 @@ namespace KeePassSync
       database2Button = new Button();
       database2Button.Text = "Browse";
       database2Button.AutoSize = true;
-      database1Button.Click += selectDatabase1;
+      database2Button.Click += selectDatabase2;
 
       database2Panel.Controls.Add(database2Label);
       database2Panel.Controls.Add(database2Button);
