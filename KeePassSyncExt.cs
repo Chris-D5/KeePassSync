@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 using KeePass.Forms;
 using KeePass.Plugins;
 using KeePassLib;
 using KeePassLib.Collections;
+
 
 namespace KeePassSync
 {
@@ -43,12 +45,11 @@ namespace KeePassSync
       Console.WriteLine("Synchronize Database");
       PwDatabase database = m_host.Database;
       hostEntries = DataBaseReader.ReadDatabase(database);
+      String databaseName = database.Name;
 
-      Form form = new Form();
-      Label label = new Label();
-      label.Text = "Test";
-      form.Controls.Add(label);
+      KeePassSyncForm form = new KeePassSyncForm(database);
       form.Show();
+
     }
     private void OnOptionsClicked(object sender, EventArgs e)
     {
