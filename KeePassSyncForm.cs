@@ -45,6 +45,7 @@ namespace KeePassSync
       database1Button = new Button();
       database1Button.Text = "Browse";
       database1Button.AutoSize = true;
+      database1Button.Click += selectDatabase1;
 
       database1Panel.Controls.Add(database1Label);
       database1Panel.Controls.Add(database1Button);
@@ -55,8 +56,7 @@ namespace KeePassSync
       database2Panel.Location = new Point(20, 60);
 
       database2Label = new Label();
-      database2Label.Text = database.Name +
-                            " (" + UrlUtil.GetFileName(database.IOConnectionInfo.Path) + ")";
+      database2Label.Text = "Select a Database";
       database2Label.AutoSize = true;
 
       database2Button = new Button();
@@ -93,6 +93,63 @@ namespace KeePassSync
       };
 
       Controls.Add(button);
+    }
+
+    private String getFilePath()
+    {
+      OpenFileDialog openFileDialog = new OpenFileDialog();
+      openFileDialog.Filter = "KeePass database file | *.kdbx";
+      openFileDialog.Multiselect = false;
+      //checked if a file was even opened
+      bool? success = openFileDialog.ShowDialog() == DialogResult.OK;
+
+
+      if (success != true)
+      {
+        return null;
+      }
+
+      String filePath = openFileDialog.FileName;
+
+      return filePath;
+    }
+
+    private void selectDatabase(Label label)
+    {
+      PwDatabase database = null;
+
+      String filePath = getFilePath();
+
+      String databaseName = "";
+
+      if (filePath == null)
+      {
+        databaseName = "Select a Database";
+
+      }
+      else
+      {
+        databaseName = filePath;
+      }
+      database1Label.Text = databaseName;
+
+      if (false)
+      {
+        database1Label.Text = database.Name +
+                           " (" + UrlUtil.GetFileName(database.IOConnectionInfo.Path) + ")";
+      }
+
+    }
+
+    public void selectDatabase1(Object sender, EventArgs e)
+    {
+      selectDatabase(database1Label);
+    }
+
+
+    public void selectDatabase2(Object sender, EventArgs e)
+    {
+      selectDatabase(database2Label);
     }
   }
 }
